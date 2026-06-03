@@ -1,0 +1,460 @@
+/* ================================================================
+   animations.css — premium interaction layer
+   Typewriter · Parallax · Card entrance · Cursor · Reveal
+   Skill bars · Hire float · Scroll progress · Service rows
+================================================================ */
+
+/* ── HERO PARALLAX (CSS custom property driven) ─────────────── */
+.hero {
+  --parallax-y: 0px;
+}
+.hero::before {
+  transform: translateY(var(--parallax-y));
+  transition: none;
+}
+
+/* ── HERO CURSOR SPOTLIGHT ─────────────────────────────────────── */
+.hero-cursor-spot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: background 0.15s ease;
+}
+
+/* ── HEADING REVEAL ─────────────────────────────────────────── */
+.h3d-hidden {
+  transform: scale(0.78) translateY(24px) !important;
+  opacity: 0.04 !important;
+  transition: transform 0.95s cubic-bezier(0.16,1,0.3,1), opacity 0.95s ease !important;
+  transform-origin: center 65%;
+}
+.h3d-active {
+  transform: none !important;
+  opacity: 1 !important;
+  transition: transform 0.95s cubic-bezier(0.16,1,0.3,1), opacity 0.95s ease !important;
+  transform-origin: center 65%;
+}
+
+/* ── TYPED CURSOR BLINK ─────────────────────────────────────── */
+h1.hero-h1 .rotator::after {
+  animation: typed-blink 0.95s steps(2, start) infinite;
+}
+@keyframes typed-blink {
+  to { opacity: 0; }
+}
+
+/* ── CARD ENTRANCE (stagger via JS class) ───────────────────── */
+.card-enter {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16,1,0.3,1),
+    transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.card-enter-active {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── WORK CARD ──────────────────────────────────────────────── */
+.work-card {
+  will-change: transform;
+  transition:
+    opacity       0.45s ease,
+    filter        0.45s ease,
+    transform     0.6s  cubic-bezier(0.16,1,0.3,1),
+    border-color  0.35s ease,
+    box-shadow    0.4s  ease !important;
+}
+
+/* Aura glow */
+.work-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% -12%, rgba(255,90,60,0.15), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+.work-card:hover::before { opacity: 1; }
+
+/* Shimmer sweep */
+.work-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.05) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.78s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+.work-card:hover::after { transform: translateX(120%); }
+
+/* Corner brackets */
+.work-card .thumb::before,
+.work-card .thumb::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  z-index: 5; opacity: 0; pointer-events: none;
+  transition: all 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+.work-card .thumb::before {
+  top: 10px; left: 10px;
+  border-top: 1.5px solid var(--accent);
+  border-left: 1.5px solid var(--accent);
+}
+.work-card .thumb::after {
+  bottom: 10px; right: 10px;
+  border-bottom: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+}
+.work-card:hover .thumb::before,
+.work-card:hover .thumb::after {
+  opacity: 1; width: 22px; height: 22px;
+}
+
+/* Kill plain translateY so tilt JS owns the transform */
+.work-card:hover { transform: none; }
+
+/* Ensure thumb + body sit above aura */
+.work-card .thumb,
+.work-card .body { position: relative; z-index: 1; }
+
+/* Impact line */
+.work-card .impact {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--accent); opacity: 0.9; margin-bottom: 2px;
+}
+
+/* ── TESTIMONIAL CARD ───────────────────────────────────────── */
+.testimonial-card {
+  will-change: transform;
+  overflow: hidden;
+  transition:
+    opacity       0.45s ease,
+    filter        0.45s ease,
+    transform     0.6s  cubic-bezier(0.16,1,0.3,1),
+    border-color  0.25s ease !important;
+}
+.testimonial-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% -10%, rgba(255,90,60,0.11), transparent 65%);
+  opacity: 0; transition: opacity 0.5s ease;
+  pointer-events: none; z-index: 0; border-radius: inherit;
+}
+.testimonial-card:hover::before { opacity: 1; }
+.testimonial-card .open-q,
+.testimonial-card blockquote,
+.testimonial-card .meta { position: relative; z-index: 1; }
+.testimonial-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.035) 50%, transparent 65%);
+  transform: translateX(-115%);
+  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: none; z-index: 2; border-radius: inherit;
+}
+.testimonial-card:hover::after { transform: translateX(115%); }
+
+/* ── ENGAGEMENT CARD ────────────────────────────────────────── */
+.engagement-card {
+  position: relative;
+  will-change: transform;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 0 rgba(255,90,60,0);
+  transition:
+    background-color 0.25s ease,
+    border-color     0.25s ease,
+    transform        0.6s  cubic-bezier(0.16,1,0.3,1),
+    box-shadow       0.5s  ease !important;
+}
+.engagement-card > * { position: relative; z-index: 1; }
+.engagement-card:hover {
+  box-shadow: inset 0 1px 0 rgba(255,90,60,0.15), 0 0 60px rgba(255,90,60,0.06);
+}
+
+/* ── STACK CARD ─────────────────────────────────────────────── */
+.stack-card {
+  will-change: transform;
+  transition: border-color 0.25s ease, transform 0.65s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+/* ── PROCESS STEP ───────────────────────────────────────────── */
+.process .step {
+  will-change: transform;
+  transition: background-color 0.3s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+/* ── SERVICE ROW ────────────────────────────────────────────── */
+.service-row {
+  transition: padding 0.35s ease, background-color 0.35s ease, opacity 0.3s ease !important;
+}
+
+/* Service row line-reveal on scroll */
+.service-row.row-hidden {
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1), padding 0.35s ease !important;
+}
+.service-row.row-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── STAGGER DELAYS ─────────────────────────────────────────── */
+.stack-grid .stack-col:nth-child(1) { transition-delay: 0s; }
+.stack-grid .stack-col:nth-child(2) { transition-delay: 0.07s; }
+.stack-grid .stack-col:nth-child(3) { transition-delay: 0.14s; }
+.stack-grid .stack-col:nth-child(4) { transition-delay: 0.21s; }
+
+.process .step:nth-child(1) { transition-delay: 0s; }
+.process .step:nth-child(2) { transition-delay: 0.09s; }
+.process .step:nth-child(3) { transition-delay: 0.18s; }
+.process .step:nth-child(4) { transition-delay: 0.27s; }
+
+/* Grid item entrance stagger (for card-enter applied by JS) */
+.work-grid .work-card:nth-child(1),
+.work-grid .work-card:nth-child(2) { /* first row — no extra delay */ }
+
+/* ── NAV LINK ACTIVE UNDERLINE ──────────────────────────────── */
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 1.5px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 14px; }
+
+/* ── REVEAL ANIMATION (generic) ─────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── SCROLL PROGRESS BAR ────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent) 0%, #FF9060 50%, #FFBA7A 100%);
+  z-index: 10000;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+}
+
+/* ── CUSTOM CURSOR ──────────────────────────────────────────── */
+#cursor-dot,
+#cursor-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+#cursor-dot {
+  width: 5px; height: 5px;
+  background: var(--accent);
+  transition: transform 0.12s ease, opacity 0.2s ease, width 0.25s ease, height 0.25s ease;
+  will-change: left, top;
+}
+#cursor-ring {
+  width: 28px; height: 28px;
+  border: 1.5px solid rgba(255,90,60,0.45);
+  transition:
+    width  0.35s cubic-bezier(0.16,1,0.3,1),
+    height 0.35s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.25s ease,
+    opacity 0.25s ease;
+  will-change: left, top;
+}
+/* Expand ring on interactive elements */
+body.cursor-hover #cursor-ring {
+  width: 56px; height: 56px;
+  border-color: rgba(255,90,60,0.6);
+  background: rgba(255,90,60,0.04);
+}
+body.cursor-hover #cursor-dot {
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0.6;
+}
+body.has-custom-cursor * { cursor: none !important; }
+body.has-custom-cursor input,
+body.has-custom-cursor textarea,
+body.has-custom-cursor select { cursor: text !important; }
+
+/* Cursor label hint */
+#cursor-label {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--line-2);
+  padding: 4px 8px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(0, 0) scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1);
+}
+#cursor-label.visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* ── STATS STRIP ────────────────────────────────────────────── */
+.stats-strip {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+}
+.stats-strip .stat {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px; padding: 28px 16px;
+  border-right: 1px solid var(--line);
+  text-align: center;
+  transition: background-color 0.25s ease;
+}
+.stats-strip .stat:hover { background: var(--paper-2); }
+.stats-strip .stat:last-child { border-right: none; }
+.stat-num-wrap {
+  display: flex; align-items: baseline; gap: 2px; line-height: 1;
+}
+.stat-n {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  color: var(--ink); font-style: italic; line-height: 1;
+}
+.stat-unit {
+  font-family: var(--mono);
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: var(--accent); line-height: 1;
+}
+.stat-l {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+@media (max-width: 600px) {
+  .stats-strip { flex-wrap: wrap; }
+  .stats-strip .stat { flex: 1 1 50%; border-bottom: 1px solid var(--line); }
+  .stats-strip .stat:nth-child(even) { border-right: none; }
+  .stats-strip .stat:nth-last-child(-n+2) { border-bottom: none; }
+}
+
+/* ── MARQUEE HOVER PAUSE ────────────────────────────────────── */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* ── FLOATING HIRE CTA ──────────────────────────────────────── */
+.hire-float {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 18px;
+  border-radius: 100px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  z-index: 8000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.16,1,0.3,1),
+    background 0.2s ease;
+  pointer-events: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hire-float.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.hire-float.hf-dismissed {
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+}
+.hire-float .hf-dot {
+  width: 7px; height: 7px;
+  background: #4ade80;
+  border-radius: 50%; flex-shrink: 0;
+  animation: hfpulse 2.2s infinite;
+}
+@keyframes hfpulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+.hire-float .hf-arrow {
+  opacity: 0.6;
+  margin-left: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.hire-float:hover .hf-arrow { transform: translateX(3px); opacity: 1; }
+.hire-float .hf-close {
+  background: none; border: none;
+  font-size: 15px; line-height: 1;
+  cursor: pointer; padding: 0 0 0 4px;
+  font-family: inherit;
+  opacity: 0.45;
+  transition: opacity 0.2s ease;
+}
+.hire-float .hf-close:hover { opacity: 1; }
+@media (max-width: 480px) {
+  .hire-float { bottom: 16px; right: 16px; padding: 10px 14px; font-size: 10px; }
+}
+
+/* ── BTN MAGNETIC READY ─────────────────────────────────────── */
+.btn, .nav-cta { transition: all 0.25s ease; }
+
+/* ── HERO BADGE PULSE ───────────────────────────────────────── */
+.hero-badge.pulse-badge {
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,90,60,0.25); }
+  50%       { box-shadow: 0 0 0 8px rgba(255,90,60,0); }
+}
+
+/* ── SKILL BARS ─────────────────────────────────────────────── */
+.skill-fill {
+  transition: width 1.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ── TECH PREVIEW ICONS ─────────────────────────────────────── */
+.tech-preview {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 2px;
+}
+.tech-preview svg {
+  width: 16px; height: 16px;
+  opacity: 0.45;
+  transition: opacity 0.25s ease;
+}
+.work-card:hover .tech-preview svg { opacity: 0.7; }

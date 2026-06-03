@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How Kishan Dasadiya led a 5-person team to build and ship Bizaio — a business-operations SaaS platform built with Laravel 10 and Livewire, delivering two major releases on time.">
+<meta name="keywords" content="Laravel SaaS case study, Bizaio, Laravel Livewire project, SaaS platform development Laravel">
+<meta name="author" content="Dasadiya Kishan">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#14110E">
+<link rel="canonical" href="https://dasadiyakishan.github.io/case-bizaio.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dasadiya Kishan — Laravel Developer">
+<meta property="og:title" content="Bizaio SaaS Platform — Laravel Case Study | Kishan Dasadiya">
+<meta property="og:description" content="How Kishan Dasadiya led a 5-person team to build and ship Bizaio — a business-operations SaaS platform built with Laravel 10 and Livewire, delivering two major releases on time.">
+<meta property="og:url" content="https://dasadiyakishan.github.io/case-bizaio.html">
+<meta property="og:image" content="https://dasadiyakishan.github.io/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bizaio SaaS Platform — Laravel Case Study | Kishan Dasadiya">
+<meta name="twitter:description" content="How Kishan Dasadiya led a 5-person team to build and ship Bizaio — a business-operations SaaS platform built with Laravel 10 and Livewire, delivering two major releases on time.">
+<meta name="twitter:image" content="https://dasadiyakishan.github.io/og-image.png">
+<title>Bizaio SaaS Platform — Laravel Case Study | Kishan Dasadiya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="attractive.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7SB89L87X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M7SB89L87X');
+</script>
+</head>
+<body>
+<div id="nav-host"></div>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="margin-bottom: 28px;"><span class="star"></span> Case 01 · SaaS · 2022 – 2024</div>
+      <h1 class="display" style="font-size: clamp(64px, 11vw, 180px);">Bizaio</h1>
+      <p class="lede" style="margin-top: 24px; max-width: 60ch;">
+        A business operations platform built around small-team workflows — leads, billing surfaces, and role-based access, served from a Livewire-driven admin.
+      </p>
+    </div>
+    <div class="case-meta reveal">
+      <div class="cell"><div class="k">Role</div><div class="v">Lead Developer</div></div>
+      <div class="cell"><div class="k">Team</div><div class="v">5 engineers</div></div>
+      <div class="cell"><div class="k">Stack</div><div class="v">Laravel 10 · Livewire · MySQL</div></div>
+      <div class="cell"><div class="k">Duration</div><div class="v">~2 yrs · 2 releases</div></div>
+    </div>
+    <div class="case-cover reveal">// Bizaio dashboard screenshot · 16:9</div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="case-body reveal">
+    <h3>Problem</h3>
+    <div class="prose">
+      <p>The founders had three internal tools held together by spreadsheets, a shared Google Drive, and a paid SaaS that didn't quite fit. Onboarding a new team member took half a day and a Loom.</p>
+      <p>They wanted one product their team would actually open in the morning — something opinionated, fast, and adjustable per workspace.</p>
+    </div>
+  </div>
+  <div class="case-body reveal">
+    <h3>What I built</h3>
+    <div class="prose">
+      <h4>Auth and tenants</h4>
+      <p>Workspace-scoped models from day one: every query goes through a tenant guard. Single Laravel app, multi-tenant database, role-based policies on top of Laravel's gate.</p>
+      <h4>Billing surfaces</h4>
+      <p>Plans, seats, invoices, and a reconciliation worker that nightly checks subscriptions against the source of truth. No webhooks-only fragility.</p>
+      <h4>Livewire admin</h4>
+      <p>Reactive tables, modals and inline edits — fast to ship, easy for the next dev to maintain. No SPA build pipeline to babysit.</p>
+    </div>
+  </div>
+  <div class="case-body reveal">
+    <h3>Outcome</h3>
+    <div class="prose">
+      <p>Two major releases in two years, on time. The team grew from solo to five engineers; I led code review, architecture decisions, and the founder relationship.</p>
+      <div class="case-results">
+        <div class="r"><div class="figure">5<em>devs</em></div><div class="label">Team size led</div></div>
+        <div class="r"><div class="figure">2<em>releases</em></div><div class="label">Major versions shipped</div></div>
+        <div class="r"><div class="figure">100%<em>uptime</em></div><div class="label">During my tenure</div></div>
+      </div>
+      <p class="muted" style="font-size: 14px;">Detailed metrics omitted at client's request.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="case-nav">
+    <a href="work.html"><span class="label">← All work</span><span class="name">Selected work</span></a>
+    <a class="next" href="case-restropos.html"><span class="label">Next case →</span><span class="name">Restropos</span></a>
+  </div>
+</section>
+
+<div id="foot-host"></div>
+
+<script src="chrome.js"></script>
+<script src="site.js"></script>
+<script>mountChrome('work');</script>
+<script src="animations.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bizaio SaaS Platform",
+  "description": "Case study: Kishan Dasadiya led a 5-developer team building Bizaio, a business-operations SaaS platform using Laravel 10 and Livewire, shipping two major releases on schedule.",
+  "url": "https://dasadiyakishan.github.io/case-bizaio.html",
+  "author": {
+    "@type": "Person",
+    "@id": "https://dasadiyakishan.github.io/#person",
+    "name": "Dasadiya Kishan"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Dasadiya Kishan",
+    "url": "https://dasadiyakishan.github.io/"
+  },
+  "datePublished": "2026-05-05",
+  "keywords": "Laravel, Livewire, MySQL, SaaS, team lead",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://dasadiyakishan.github.io/"},
+      {"@type":"ListItem","position":2,"name":"Work","item":"https://dasadiyakishan.github.io/work.html"},
+      {"@type":"ListItem","position":3,"name":"Bizaio SaaS Platform","item":"https://dasadiyakishan.github.io/case-bizaio.html"}
+    ]
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Solo-built public health tracker for COVID-19 data in Hong Kong using Laravel with Redis cache-first architecture, handling 10k+ daily reads at 24/7 uptime.">
+<meta name="keywords" content="Laravel Redis case study, public health app Laravel, Laravel caching, COVID tracker, Laravel solo project">
+<meta name="author" content="Dasadiya Kishan">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#14110E">
+<link rel="canonical" href="https://dasadiyakishan.github.io/case-covid19hk.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dasadiya Kishan — Laravel Developer">
+<meta property="og:title" content="COVID19 Hong Kong Tracker — Laravel Case Study | Kishan Dasadiya">
+<meta property="og:description" content="Solo-built public health tracker for COVID-19 data in Hong Kong using Laravel with Redis cache-first architecture, handling 10k+ daily reads at 24/7 uptime.">
+<meta property="og:url" content="https://dasadiyakishan.github.io/case-covid19hk.html">
+<meta property="og:image" content="https://dasadiyakishan.github.io/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="COVID19 Hong Kong Tracker — Laravel Case Study | Kishan Dasadiya">
+<meta name="twitter:description" content="Solo-built public health tracker for COVID-19 data in Hong Kong using Laravel with Redis cache-first architecture, handling 10k+ daily reads at 24/7 uptime.">
+<meta name="twitter:image" content="https://dasadiyakishan.github.io/og-image.png">
+<title>COVID19 Hong Kong Tracker — Laravel Case Study | Kishan Dasadiya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="attractive.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7SB89L87X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M7SB89L87X');
+</script>
+</head>
+<body>
+<div id="nav-host"></div>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="margin-bottom: 28px;"><span class="star"></span> Case 03 · Public health · 2021</div>
+      <h1 class="display" style="font-size: clamp(56px, 9vw, 152px);">COVID19<br>Hong&nbsp;Kong</h1>
+      <p class="lede" style="margin-top: 24px; max-width: 60ch;">
+        A live tracker and dashboard for public-health data — ingested from official feeds, normalised, and surfaced as charts and tables for the public.
+      </p>
+    </div>
+    <div class="case-meta reveal">
+      <div class="cell"><div class="k">Role</div><div class="v">Solo developer</div></div>
+      <div class="cell"><div class="k">Surface</div><div class="v">Public dashboard</div></div>
+      <div class="cell"><div class="k">Stack</div><div class="v">Laravel · MySQL · Redis</div></div>
+      <div class="cell"><div class="k">Duration</div><div class="v">~3 months</div></div>
+    </div>
+    <div class="case-cover reveal">// Public dashboard screenshot · 16:9</div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="case-body reveal">
+    <h3>Problem</h3>
+    <div class="prose">
+      <p>Public-health data was scattered across feeds and PDFs. People wanted a single page that loaded fast, told the truth, and didn't lie about the freshness of the numbers.</p>
+    </div>
+  </div>
+  <div class="case-body reveal">
+    <h3>What I built</h3>
+    <div class="prose">
+      <h4>Scheduled ingest</h4>
+      <p>Cron-driven jobs pull from official sources, normalise into a flat schema, and write a daily snapshot. If a feed misses, the dashboard says so — it doesn't pretend.</p>
+      <h4>Cache-first reads</h4>
+      <p>Every public route is served from Redis with a short TTL. The DB only sees a query when the cache is genuinely cold.</p>
+      <h4>Honest charts</h4>
+      <p>Plain HTML/CSS for the lists, a small chart lib for the trends. Last-updated stamp visible on every page.</p>
+    </div>
+  </div>
+  <div class="case-body reveal">
+    <h3>Outcome</h3>
+    <div class="prose">
+      <p>Held up during traffic spikes when official sites went down. Used as a backup reference by local communities.</p>
+      <div class="case-results">
+        <div class="r"><div class="figure">&lt;100<em>ms</em></div><div class="label">Cached page response</div></div>
+        <div class="r"><div class="figure">24<em>×</em></div><div class="label">Hourly ingest cycles</div></div>
+        <div class="r"><div class="figure">0<em>misses</em></div><div class="label">Scheduled job failures</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="case-nav">
+    <a href="case-restropos.html"><span class="label">← Previous</span><span class="name">Restropos</span></a>
+    <a class="next" href="case-asthma.html"><span class="label">Next case →</span><span class="name">Asthma Hub</span></a>
+  </div>
+</section>
+
+<div id="foot-host"></div>
+
+<script src="chrome.js"></script>
+<script src="site.js"></script>
+<script>mountChrome('work');</script>
+<script src="animations.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "COVID19 Hong Kong Tracker",
+  "description": "Case study: Solo Laravel application tracking COVID-19 public health data for Hong Kong with Redis cache-first reads and scheduled data ingestion.",
+  "url": "https://dasadiyakishan.github.io/case-covid19hk.html",
+  "author": {
+    "@type": "Person",
+    "@id": "https://dasadiyakishan.github.io/#person",
+    "name": "Dasadiya Kishan"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Dasadiya Kishan",
+    "url": "https://dasadiyakishan.github.io/"
+  },
+  "datePublished": "2026-05-05",
+  "keywords": "Laravel, Redis, MySQL, public health, caching",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://dasadiyakishan.github.io/"},
+      {"@type":"ListItem","position":2,"name":"Work","item":"https://dasadiyakishan.github.io/work.html"},
+      {"@type":"ListItem","position":3,"name":"COVID19 Hong Kong Tracker","item":"https://dasadiyakishan.github.io/case-covid19hk.html"}
+    ]
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+/* ================================================================
+   attractive.css — premium visual polish layer
+   Film grain · Gradient mesh hero · Project colors
+   Skill bars · Section animations · Glass nav · Footer shimmer
+================================================================ */
+
+/* ── FILM GRAIN OVERLAY ──────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%; height: 200%;
+  pointer-events: none;
+  z-index: 9996;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='200' height='200' filter='url(%23g)'/></svg>");
+  background-size: 200px 200px;
+  animation: grain-shift 0.9s steps(8) infinite;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0,0); }
+  12%  { transform: translate(-4%,-8%); }
+  25%  { transform: translate(-12%,4%); }
+  37%  { transform: translate(5%,-18%); }
+  50%  { transform: translate(-3%,20%); }
+  62%  { transform: translate(-14%,8%); }
+  75%  { transform: translate(12%,0); }
+  87%  { transform: translate(2%,12%); }
+}
+
+/* ── HERO — animated gradient mesh background ────────────────── */
+.hero {
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent 0%, var(--accent) 40%, rgba(255,90,60,0.3) 100%) 1;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 80% 20%, rgba(255,90,60,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 80%, rgba(255,160,80,0.03) 0%, transparent 70%);
+  animation: mesh-shift 12s ease-in-out infinite alternate;
+}
+@keyframes mesh-shift {
+  0%   { opacity: 0.7; transform: scale(1) translateY(0); }
+  50%  { opacity: 1; transform: scale(1.04) translateY(-10px); }
+  100% { opacity: 0.8; transform: scale(0.98) translateY(8px); }
+}
+
+/* ── HERO H1 — gradient accent word ─────────────────────────── */
+h1.hero-h1 em,
+h1.hero-h1 .accent-word {
+  background: linear-gradient(135deg, #FF5A3C 0%, #FF9060 55%, #FFBA7A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+
+/* ── HERO BADGE — available pill ────────────────────────────── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(255,90,60,0.35);
+  background: rgba(255,90,60,0.07);
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74,222,128,0.6);
+  flex-shrink: 0;
+  animation: dot-pulse 2s infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%       { box-shadow: 0 0 0 4px rgba(74,222,128,0); }
+}
+
+/* ── NAV — premium glass morphism ───────────────────────────── */
+.nav {
+  background: color-mix(in oklab, var(--paper) 68%, transparent);
+  backdrop-filter: saturate(210%) blur(24px);
+  -webkit-backdrop-filter: saturate(210%) blur(24px);
+  border-bottom: 1px solid rgba(255,90,60,0.1);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* ── PRIMARY BUTTON — gradient + stronger glow ───────────────── */
+.btn.primary {
+  background: linear-gradient(135deg, #FF5A3C 0%, #FF7A52 100%);
+  border-color: transparent;
+  box-shadow: 0 4px 22px rgba(255,90,60,0.32);
+  position: relative;
+  overflow: hidden;
+}
+.btn.primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: inherit;
+}
+.btn.primary:hover::before { opacity: 1; }
+.btn.primary:hover {
+  background: linear-gradient(135deg, #FF7A52 0%, #FF9060 100%);
+  box-shadow: 0 8px 32px rgba(255,90,60,0.44);
+  border-color: transparent;
+}
+
+/* ── NAV CTA glow ────────────────────────────────────────────── */
+.nav-cta {
+  box-shadow: 0 4px 16px rgba(255,90,60,0.25);
+  transition: all 0.25s ease, box-shadow 0.3s ease;
+}
+.nav-cta:hover {
+  box-shadow: 0 6px 24px rgba(255,90,60,0.4);
+}
+
+/* ── STATS STRIP — number gradient ──────────────────────────── */
+.stat-n {
+  background: linear-gradient(160deg, var(--ink) 30%, rgba(244,239,230,0.55) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stats-strip {
+  background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+}
+.stats-strip .stat:hover .stat-n {
+  background: linear-gradient(160deg, var(--accent) 0%, #FF9060 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── SKILL BARS — polished ───────────────────────────────────── */
+.skills-section {
+  background: var(--paper-2);
+}
+.skill-bars { display: flex; flex-direction: column; gap: 28px; }
+.skill-info {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 10px;
+}
+.skill-name {
+  font-family: var(--sans); font-size: 15px;
+  color: var(--ink); letter-spacing: -0.01em;
+}
+.skill-pct {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--accent); letter-spacing: 0.12em;
+  opacity: 0.85;
+}
+.skill-track {
+  height: 3px;
+  background: var(--line-2);
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--accent) 0%, #FF9060 60%, #FFBA7A 100%);
+  border-radius: 2px;
+  position: relative;
+}
+/* Shimmer on the fill bar */
+.skill-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 30px; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  border-radius: 2px;
+}
+
+/* ── SECTION HEADING — slide-from-left reveal ────────────────── */
+/* Applied via .h3d-hidden / .h3d-active by JS */
+
+/* ── SECTION EYEBROW — stronger accent ──────────────────────── */
+.eyebrow::before {
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(255,90,60,0.3));
+}
+
+/* ── SECTION TITLE italic em ─────────────────────────────────── */
+h2.section-title em {
+  background: linear-gradient(135deg, #FF5A3C 0%, #FF9060 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+
+/* ── WORK CARDS — project-specific thumbnail colors ─────────── */
+/* Bizaio · SaaS · Steel blue */
+.work-card[href*="bizaio"] .thumb-bg {
+  background:
+    repeating-linear-gradient(135deg, rgba(77,159,236,0.07) 0 14px, transparent 14px 28px),
+    linear-gradient(145deg, #0A1829 0%, #0E2845 60%, #0F3465 100%);
+}
+.work-card[href*="bizaio"] .thumb-grid {
+  background-image:
+    linear-gradient(to right, rgba(77,159,236,0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(77,159,236,0.10) 1px, transparent 1px);
+}
+.work-card[href*="bizaio"] .thumb-tag { color: #4D9FEC; border-color: rgba(77,159,236,0.55); background: rgba(10,24,41,0.85); }
+.work-card[href*="bizaio"] .thumb-num   { color: rgba(77,159,236,0.22); }
+.work-card[href*="bizaio"] .thumb-label { color: rgba(77,159,236,0.5); }
+.work-card[href*="bizaio"]:hover { border-color: #4D9FEC; box-shadow: 0 12px 48px rgba(77,159,236,0.12); }
+.work-card[href*="bizaio"]::before {
+  background: radial-gradient(circle at 50% -12%, rgba(77,159,236,0.18), transparent 65%) !important;
+}
+
+/* Restropos · Hospitality · Amber */
+.work-card[href*="restropos"] .thumb-bg {
+  background:
+    repeating-linear-gradient(135deg, rgba(240,160,48,0.07) 0 14px, transparent 14px 28px),
+    linear-gradient(145deg, #1C1000 0%, #2E1A00 60%, #402600 100%);
+}
+.work-card[href*="restropos"] .thumb-grid {
+  background-image:
+    linear-gradient(to right, rgba(240,160,48,0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(240,160,48,0.10) 1px, transparent 1px);
+}
+.work-card[href*="restropos"] .thumb-tag { color: #F0A030; border-color: rgba(240,160,48,0.55); background: rgba(28,16,0,0.85); }
+.work-card[href*="restropos"] .thumb-num   { color: rgba(240,160,48,0.22); }
+.work-card[href*="restropos"] .thumb-label { color: rgba(240,160,48,0.5); }
+.work-card[href*="restropos"]:hover { border-color: #F0A030; box-shadow: 0 12px 48px rgba(240,160,48,0.12); }
+.work-card[href*="restropos"]::before {
+  background: radial-gradient(circle at 50% -12%, rgba(240,160,48,0.18), transparent 65%) !important;
+}
+
+/* COVID19 HK · Public health · Red */
+.work-card[href*="covid19"] .thumb-bg {
+  background:
+    repeating-linear-gradient(135deg, rgba(232,64,64,0.07) 0 14px, transparent 14px 28px),
+    linear-gradient(145deg, #1A0808 0%, #2C0E0E 60%, #3E1414 100%);
+}
+.work-card[href*="covid19"] .thumb-grid {
+  background-image:
+    linear-gradient(to right, rgba(232,64,64,0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(232,64,64,0.10) 1px, transparent 1px);
+}
+.work-card[href*="covid19"] .thumb-tag { color: #E84040; border-color: rgba(232,64,64,0.55); background: rgba(26,8,8,0.85); }
+.work-card[href*="covid19"] .thumb-num   { color: rgba(232,64,64,0.22); }
+.work-card[href*="covid19"] .thumb-label { color: rgba(232,64,64,0.5); }
+.work-card[href*="covid19"]:hover { border-color: #E84040; box-shadow: 0 12px 48px rgba(232,64,64,0.12); }
+.work-card[href*="covid19"]::before {
+  background: radial-gradient(circle at 50% -12%, rgba(232,64,64,0.18), transparent 65%) !important;
+}
+
+/* Asthma Hub · Healthcare · Emerald */
+.work-card[href*="asthma"] .thumb-bg {
+  background:
+    repeating-linear-gradient(135deg, rgba(52,184,96,0.07) 0 14px, transparent 14px 28px),
+    linear-gradient(145deg, #091A10 0%, #0C2C1A 60%, #0E3D24 100%);
+}
+.work-card[href*="asthma"] .thumb-grid {
+  background-image:
+    linear-gradient(to right, rgba(52,184,96,0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52,184,96,0.10) 1px, transparent 1px);
+}
+.work-card[href*="asthma"] .thumb-tag { color: #34B860; border-color: rgba(52,184,96,0.55); background: rgba(9,26,16,0.85); }
+.work-card[href*="asthma"] .thumb-num   { color: rgba(52,184,96,0.22); }
+.work-card[href*="asthma"] .thumb-label { color: rgba(52,184,96,0.5); }
+.work-card[href*="asthma"]:hover { border-color: #34B860; box-shadow: 0 12px 48px rgba(52,184,96,0.12); }
+.work-card[href*="asthma"]::before {
+  background: radial-gradient(circle at 50% -12%, rgba(52,184,96,0.18), transparent 65%) !important;
+}
+
+/* ── WORK CARD — thumb-num watermark ─────────────────────────── */
+.work-card .thumb-num { font-size: 80px; opacity: 0.9; }
+
+/* ── WORK CARD — h3 gradient on hover ───────────────────────── */
+.work-card:hover h3 {
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── WORK CARD — body h3 size ────────────────────────────────── */
+.work-card h3 { font-size: clamp(30px, 2.8vw, 42px); }
+
+/* ── TESTIMONIAL CARDS — color-coded ────────────────────────── */
+.testimonials-grid .testimonial-card:nth-child(1) .avatar {
+  color: #4D9FEC; border-color: rgba(77,159,236,0.4);
+  background: rgba(10,24,41,0.9); box-shadow: 0 0 0 4px rgba(77,159,236,0.08);
+}
+.testimonials-grid .testimonial-card:nth-child(2) .avatar {
+  color: #F0A030; border-color: rgba(240,160,48,0.4);
+  background: rgba(28,16,0,0.9); box-shadow: 0 0 0 4px rgba(240,160,48,0.08);
+}
+.testimonials-grid .testimonial-card:nth-child(3) .avatar {
+  color: #34B860; border-color: rgba(52,184,96,0.4);
+  background: rgba(9,26,16,0.9); box-shadow: 0 0 0 4px rgba(52,184,96,0.08);
+}
+.testimonials-grid .testimonial-card:nth-child(1) .open-q { color: #4D9FEC; }
+.testimonials-grid .testimonial-card:nth-child(2) .open-q { color: #F0A030; }
+.testimonials-grid .testimonial-card:nth-child(3) .open-q { color: #34B860; }
+.testimonials-grid .testimonial-card:nth-child(1):hover { border-color: #4D9FEC; }
+.testimonials-grid .testimonial-card:nth-child(2):hover { border-color: #F0A030; }
+.testimonials-grid .testimonial-card:nth-child(3):hover { border-color: #34B860; }
+
+/* ── PROCESS STEPS ───────────────────────────────────────────── */
+.process .step::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  opacity: 0; transition: opacity 0.35s ease;
+}
+.process .step:nth-child(1)::after { background: #4D9FEC; }
+.process .step:nth-child(2)::after { background: var(--accent); }
+.process .step:nth-child(3)::after { background: #F0A030; }
+.process .step:nth-child(4)::after { background: #34B860; }
+.process .step:hover::after { opacity: 1; }
+
+.process .step .n {
+  background: linear-gradient(160deg, var(--accent) 0%, rgba(255,90,60,0.4) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── TIMELINE CONNECTOR LINE ANIMATION ───────────────────────── */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, var(--accent) 30%, rgba(255,90,60,0.3) 70%, transparent 100%);
+  animation: timeline-line 3s ease-in-out infinite alternate;
+}
+@keyframes timeline-line {
+  0%   { opacity: 0.4; }
+  100% { opacity: 0.9; }
+}
+.timeline { position: relative; }
+
+/* ── ENGAGEMENT CARD — featured ──────────────────────────────── */
+.engagement-card.featured {
+  background: linear-gradient(160deg, #1E1A16 0%, #221C17 100%);
+  border-top: 2px solid var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255,90,60,0.2);
+}
+.engagement-card.featured .name {
+  background: linear-gradient(135deg, var(--ink) 0%, #FF9060 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.engagement-card.featured .price strong { color: var(--accent); font-size: 17px; }
+
+/* ── STACK COLUMN hover ──────────────────────────────────────── */
+.stack-col:hover {
+  background: var(--paper-2);
+  border-right-color: rgba(255,90,60,0.2);
+}
+.stack-col li .yrs {
+  background: rgba(255,90,60,0.08);
+  padding: 1px 5px; border-radius: 2px;
+}
+
+/* ── RECRUITER BADGES ─────────────────────────────────────────── */
+.rec-badge.primary {
+  background: linear-gradient(135deg, #FF5A3C 0%, #FF7A52 100%);
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(255,90,60,0.22);
+}
+
+/* ── READY BLOCK — stronger glow ─────────────────────────────── */
+.ready-block::before {
+  opacity: 1;
+  background: radial-gradient(circle at center,
+    color-mix(in oklab, var(--accent) 16%, transparent) 0%, transparent 52%);
+}
+
+/* ── EMAIL CTA ───────────────────────────────────────────────── */
+.email-cta {
+  background: linear-gradient(160deg, var(--paper-2) 0%, #1A1510 100%);
+  border-color: rgba(255,90,60,0.18);
+}
+.email-cta .email-link span:first-child {
+  border-bottom: 1px solid rgba(255,90,60,0.2);
+  padding-bottom: 2px;
+  transition: border-color 0.25s ease;
+}
+.email-cta .email-link:hover span:first-child { border-bottom-color: var(--accent); }
+
+/* ── FOOTER WORDMARK — shimmer ───────────────────────────────── */
+.foot-mark {
+  font-size: clamp(80px, 22vw, 320px);
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--ink) 10%, transparent) 0%,
+    color-mix(in oklab, var(--ink) 20%, transparent) 50%,
+    color-mix(in oklab, var(--ink) 10%, transparent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer-mark 6s linear infinite;
+}
+@keyframes shimmer-mark {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ── SERVICE ROW — accent number ─────────────────────────────── */
+.service-row .num {
+  background: linear-gradient(160deg, var(--accent) 0%, rgba(255,90,60,0.5) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── MARQUEE — accent glyph pulse ───────────────────────────── */
+.marquee-item .glyph { box-shadow: 0 0 8px rgba(255,90,60,0.4); }
+
+/* ── HIRE FLOAT — warm paper gradient ───────────────────────── */
+.hire-float {
+  background: linear-gradient(135deg, #F4EFE6 0%, #E8E0D4 100%);
+  color: #14110E;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
+}
+.hire-float:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4EFE6 100%);
+}
+.hire-float .hf-close { color: #14110E; }
+
+/* ── BRAND MARK — coral glow ─────────────────────────────────── */
+.brand-mark {
+  box-shadow: 0 0 0 0 rgba(255,90,60,0);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.brand:hover .brand-mark { box-shadow: 0 0 16px rgba(255,90,60,0.3); }
+
+/* ── CONTACT CHANNELS ────────────────────────────────────────── */
+.contact-channel { position: relative; }
+.contact-channel::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.contact-channel:hover::after { transform: scaleX(1); }
+
+/* ── SCROLL PROGRESS — override with full gradient ───────────── */
+#scroll-progress {
+  background: linear-gradient(90deg, var(--accent) 0%, #FF9060 50%, #FFBA7A 100%);
+  height: 2.5px;
+}
+
+/* ── LIVE DOT ─────────────────────────────────────────────────── */
+.live-dot { box-shadow: 0 0 0 0 rgba(89,226,135,0.7); }
+
+/* ── HERO INNER Z-INDEX FIX (so hero::after mesh doesn't overlay content) */
+.hero-inner { position: relative; z-index: 2; }
+
+/* ── PREFERS REDUCED MOTION ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .hero::after,
+  .foot-mark,
+  .orbit-ring,
+  .hf-dot,
+  .hero-badge.pulse-badge,
+  .timeline::before,
+  .marquee-track {
+    animation: none !important;
+  }
+  .skill-fill {
+    transition: none !important;
+  }
+}

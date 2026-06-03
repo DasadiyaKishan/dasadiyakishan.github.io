@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Laravel backend engineering for Restropos: a hospitality POS with real-time order flow, kitchen display integration, and zero-downtime deployment using Laravel REST APIs.">
+<meta name="keywords" content="Laravel POS system, restaurant software Laravel, Laravel case study, hospitality backend, REST API POS">
+<meta name="author" content="Dasadiya Kishan">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#14110E">
+<link rel="canonical" href="https://dasadiyakishan.github.io/case-restropos.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dasadiya Kishan — Laravel Developer">
+<meta property="og:title" content="Restropos Restaurant POS — Laravel Case Study | Kishan Dasadiya">
+<meta property="og:description" content="Laravel backend engineering for Restropos: a hospitality POS with real-time order flow, kitchen display integration, and zero-downtime deployment using Laravel REST APIs.">
+<meta property="og:url" content="https://dasadiyakishan.github.io/case-restropos.html">
+<meta property="og:image" content="https://dasadiyakishan.github.io/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Restropos Restaurant POS — Laravel Case Study | Kishan Dasadiya">
+<meta name="twitter:description" content="Laravel backend engineering for Restropos: a hospitality POS with real-time order flow, kitchen display integration, and zero-downtime deployment using Laravel REST APIs.">
+<meta name="twitter:image" content="https://dasadiyakishan.github.io/og-image.png">
+<title>Restropos Restaurant POS — Laravel Case Study | Kishan Dasadiya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="attractive.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M7SB89L87X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M7SB89L87X');
+</script>
+</head>
+<body>
+<div id="nav-host"></div>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="margin-bottom: 28px;"><span class="star"></span> Case 02 · Hospitality · 2023</div>
+      <h1 class="display" style="font-size: clamp(64px, 11vw, 180px);">Restropos</h1>
+      <p class="lede" style="margin-top: 24px; max-width: 60ch;">
+        Point-of-sale and back-office for restaurants and cafés. Order flow, kitchen display, table management, daily settlements, and reports.
+      </p>
+    </div>
+    <div class="case-meta reveal">
+      <div class="cell"><div class="k">Role</div><div class="v">Backend Developer</div></div>
+      <div class="cell"><div class="k">Surface</div><div class="v">Web admin · REST API</div></div>
+      <div class="cell"><div class="k">Stack</div><div class="v">Laravel · MySQL · Bootstrap</div></div>
+      <div class="cell"><div class="k">Duration</div><div class="v">~6 months</div></div>
+    </div>
+    <div class="case-cover reveal">// Restropos POS interface · 16:9</div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="case-body reveal">
+    <h3>Problem</h3>
+    <div class="prose">
+      <p>Restaurants needed a POS that the floor staff could learn in an afternoon, and that owners could read without calling a developer. The previous system mixed three roles into one screen — and locked all of them when one was busy.</p>
+    </div>
+  </div>
+  <div class="case-body reveal">
+    <h3>What I built</h3>
+    <div class="prose">
+      <h4>API for the tablet client</h4>
+      <p>REST endpoints for orders, items, modifiers, splits, kitchen events, and settlements. Idempotent writes, optimistic UI on the client side.</p>
+      <h4>Owner admin</h4>
+      <p>A Bootstrap dashboard for menu, taxes, staff, and the day's report. Boring forms, fast pages, no surprises.</p>
+      <h4>Reports that match the till</h4>
+      <p>Daily and shift-level reports calculated from the same source the receipt prints from. Owners stop arguing with the system on day one.</p>
+    </div>
+  </div>
+  <div class="case-body reveal">
+    <h3>Outcome</h3>
+    <div class="prose">
+      <p>Rolled out across the founder's restaurants first, then sold to other owners. Kitchen never went down during peak hours.</p>
+      <div class="case-results">
+        <div class="r"><div class="figure">6<em>months</em></div><div class="label">Build to first install</div></div>
+        <div class="r"><div class="figure">∞<em>tickets</em></div><div class="label">Through a single shift</div></div>
+        <div class="r"><div class="figure">0<em>downtime</em></div><div class="label">During peak rollouts</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="case-nav">
+    <a href="case-bizaio.html"><span class="label">← Previous</span><span class="name">Bizaio</span></a>
+    <a class="next" href="case-covid19hk.html"><span class="label">Next case →</span><span class="name">COVID19 Hong Kong</span></a>
+  </div>
+</section>
+
+<div id="foot-host"></div>
+
+<script src="chrome.js"></script>
+<script src="site.js"></script>
+<script>mountChrome('work');</script>
+<script src="animations.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Restropos Restaurant POS",
+  "description": "Case study: Laravel REST API backend for Restropos hospitality POS with real-time order flow, kitchen display system, and zero-downtime deployment.",
+  "url": "https://dasadiyakishan.github.io/case-restropos.html",
+  "author": {
+    "@type": "Person",
+    "@id": "https://dasadiyakishan.github.io/#person",
+    "name": "Dasadiya Kishan"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Dasadiya Kishan",
+    "url": "https://dasadiyakishan.github.io/"
+  },
+  "datePublished": "2026-05-05",
+  "keywords": "Laravel, REST API, Bootstrap, POS, hospitality",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://dasadiyakishan.github.io/"},
+      {"@type":"ListItem","position":2,"name":"Work","item":"https://dasadiyakishan.github.io/work.html"},
+      {"@type":"ListItem","position":3,"name":"Restropos Restaurant POS","item":"https://dasadiyakishan.github.io/case-restropos.html"}
+    ]
+  }
+}
+</script>
+</body>
+</html>
